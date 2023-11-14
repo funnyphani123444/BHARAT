@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        .converter-container {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .converter-header {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .converter-input {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .converter-input-label {
+            width: 100px;
+            text-align: right;
+        }
+
+        .converter-input-field {
+            width: 150px;
+            padding: 5px;
+        }
+
+        .converter-button {
+            display: block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .converter-result {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="converter-container">
+    <h2 class="converter-header">Temperature Converter</h2>
+
+    <div class="converter-input">
+        <label for="celsiusInput" class="converter-input-label">Celsius:</label>
+        <input type="number" id="celsiusInput" class="converter-input-field">
+    </div>
+
+    <div class="converter-input">
+        <label for="fahrenheitInput" class="converter-input-label">Fahrenheit:</label>
+        <input type="number" id="fahrenheitInput" class="converter-input-field">
+    </div>
+
+    <button class="converter-button">Convert</button>
+
+    <p class="converter-result"></p>
+</div>
+
+<script>
+    // JavaScript code to handle temperature conversion and display results
+    const celsiusInput = document.getElementById('celsiusInput');
+    const fahrenheitInput = document.getElementById('fahrenheitInput');
+    const converterButton = document.querySelector('.converter-button');
+    const converterResult = document.querySelector('.converter-result');
+
+    converterButton.addEventListener('click', () => {
+        const celsiusValue = parseFloat(celsiusInput.value);
+        const fahrenheitValue = parseFloat(fahrenheitInput.value);
+
+        if (celsiusValue !== NaN) {
+            const fahrenheitResult = celsiusValue * 9/5 + 32;
+            fahrenheitInput.value = fahrenheitResult.toFixed(2);
+            converterResult.textContent = `${celsiusValue}°C is equal to ${fahrenheitResult.toFixed(2)}°F`;
+        } else if (fahrenheitValue !== NaN) {
+            const celsiusResult = (fahrenheitValue - 32) * 5/9;
+            celsiusInput.value = celsiusResult.toFixed(2);
+            converterResult.textContent = `${fahrenheitValue}°F is equal to ${celsiusResult.toFixed(2)}°C`;
+        } else {
+            converterResult.textContent = 'Please enter a valid temperature value.';
+        }
+    });
+</script>
+</body>
+</html>

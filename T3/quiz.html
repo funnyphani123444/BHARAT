@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        .quiz-container {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .quiz-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-question {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .quiz-answer {
+            margin-bottom: 5px;
+        }
+
+        .quiz-submit-button {
+            display: block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .quiz-result {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1 class="quiz-title">Quiz: General Knowledge</h1>
+
+    <p class="quiz-question">What is the capital of France?</p>
+    <input type="radio" name="question1" id="answer1" value="Paris">
+    <label for="answer1">Paris</label><br>
+    <input type="radio" name="question1" id="answer2" value="London">
+    <label for="answer2">London</label><br>
+    <input type="radio" name="question1" id="answer3" value="Rome">
+    <label for="answer3">Rome</label><br>
+
+    <p class="quiz-question">What is the largest planet in our solar system?</p>
+    <input type="radio" name="question2" id="answer4" value="Jupiter">
+    <label for="answer4">Jupiter</label><br>
+    <input type="radio" name="question2" id="answer5" value="Saturn">
+    <label for="answer5">Saturn</label><br>
+    <input type="radio" name="question2" id="answer6" value="Neptune">
+    <label for="answer6">Neptune</label><br>
+
+    <button class="quiz-submit-button">Submit Quiz</button>
+
+    <p class="quiz-result"></p>
+</div>
+
+<script>
+    // JavaScript code to handle quiz submission and display results
+    const quizForm = document.querySelector('form');
+    const quizResult = document.querySelector('.quiz-result');
+
+    quizForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        let score = 0;
+
+        const question1Answer = document.getElementById('answer1').checked;
+        const question2Answer = document.getElementById('answer4').checked;
+
+        if (question1Answer) {
+            score++;
+        }
+
+        if (question2Answer) {
+            score++;
+        }
+
+        quizResult.textContent = `You scored ${score} out of 2 questions.`;
+    });
+</script>
+</body>
+</html>
